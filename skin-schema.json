@@ -56,6 +56,12 @@
            },
           "example": "\"loadingImage\": {\"imageResource\": {\"url\": \"assets/images/loading.png\"} }"
         },
+        "bufferingSpinnerDelay": {
+          "description": "The time in milliseconds that the player should wait before displaying the buffering spinner when playback stalls. Set to 0 in order to show the spinner immediately.",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 60000
+        },
         "accentColor": {
           "description": "Any valid CSS color value (named colors, three-digit hex color, six-digit hex color, RGB colors).",
           "type": "string",
@@ -101,6 +107,21 @@
         }
       },
       "required": ["defaultLanguage"]
+    },
+    "languageDirections": {
+      "ar": "rtl",
+      "dv": "rtl",
+      "he": "rtl",
+      "fa": "rtl",
+      "ks": "rtl",
+      "ku": "rtl",
+      "pa": "rtl",
+      "ps": "rtl",
+      "sd": "rtl",
+      "tk": "rtl",
+      "ug": "rtl",
+      "ur": "rtl",
+      "yi": "rtl"
     },
     "responsive": {
       "description": "Defines values needed for Responsive Design Rules",
@@ -666,7 +687,19 @@
               "description": "Show the control bar items tooltips if set to true.  Hide the control bar items tooltips if set to false. Default is false.",
               "type": "boolean",
               "default": "false"
-            }    
+            }
+          }
+        },
+        "qualitySelection":{
+          "description":"Configuration for the control bar quality selection panel/popover",
+          "type":"object",
+          "properties":{
+            "format":{
+              "description":"Determine the format of the quality options. Available formats: bitrate only, resolution only, and resolution + bitrate.",
+              "type":"string",
+              "enum": ["bitrate", "resolution", "resolution bitrate"],
+              "default":"bitrate"
+            }
           }
         }
       }
@@ -1193,7 +1226,7 @@
     "buttonNames": {
       "description": "These are the only buttons currently supported by the UI SDK.",
       "additionalProperties": false,
-      "enum": ["playPause", "volume", "timeDuration", "flexibleSpace", "discovery", "fullscreen", "moreOptions", "logo", "share", "closedCaption", "bitrateSelector", "quality", "live"]
+      "enum": ["playPause", "volume", "timeDuration", "flexibleSpace", "discovery", "fullscreen", "stereoscopic",  "moreOptions", "arrowsBlack", "logo", "share", "closedCaption", "bitrateSelector", "quality", "live"]
     },
     "buttonArray": {
       "description": "Used to list the buttons for a single platform (desktop vs. mobile).",
